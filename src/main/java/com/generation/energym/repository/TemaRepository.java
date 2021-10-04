@@ -7,5 +7,5 @@ import com.generation.energym.model.TemaModel;
 
 public interface TemaRepository extends JpaRepository<TemaModel, Long> {
 	
-	public List<TemaModel> findAllByDescricaoContainingIgnoreCase(String descricao);
+	public List<TemaModel> findAllByEquipamentoContainingIgnoreCase(String equipamento);
 }

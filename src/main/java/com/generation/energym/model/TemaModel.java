@@ -18,7 +18,7 @@ public class TemaModel {
 
 	@NotBlank
 	@Size(min = 5, max = 100)
-	private String equipamentos;
+	private String equipamento;
 
 	private Boolean ativo;
 
@@ -33,12 +33,12 @@ public class TemaModel {
 		this.id = id;
 	}
 
-	public String getEquipamentos() {
-		return equipamentos;
+	public String getEquipamento() {
+		return equipamento;
 	}
 
-	public void setEquipamentos(String equipamentos) {
-		this.equipamentos = equipamentos;
+	public void setEquipamento(String equipamento) {
+		this.equipamento = equipamento;
 	}
 
 	public Boolean getAtivo() {
