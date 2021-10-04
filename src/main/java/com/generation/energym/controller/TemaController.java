@@ -54,8 +54,8 @@ public class TemaController {
 	}
 	
 	//Put
-	@PutMapping("/{id}")
-	public ResponseEntity<TemaModel> put(@RequestBody TemaModel tema) {
+	@PutMapping
+	public ResponseEntity<TemaModel> Put(@RequestBody TemaModel tema) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(tema));
 	}
 	
