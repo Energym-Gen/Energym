@@ -9,11 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@Table(name = "tb_usuario")
 public class UsuarioModel {
 
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idUsuario;
@@ -21,16 +25,9 @@ public class UsuarioModel {
 	private @Email String email;
 	private @NotBlank @Size(min = 5 , max = 100 ) String senha;
 	
-	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE )
-	private List<PostagemModel> minhasPostagens = new ArrayList<>();
-
-	public Long getId() {
-		return idUsuario;
-	}
-
-	public void setId(Long id) {
-		this.idUsuario = id;
-	}
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE )
+	@JsonIgnoreProperties("usuario")
+	private List<PostagemModel> postagens = new ArrayList<>();
 
 	public String getNome() {
 		return nome;
@@ -56,12 +53,21 @@ public class UsuarioModel {
 		this.senha = senha;
 	}
 
-	public List<PostagemModel> getMinhasPostagens() {
-		return minhasPostagens;
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setMinhasPostagens(List<PostagemModel> minhasPostagens) {
-		this.minhasPostagens = minhasPostagens;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
+
+	public List<PostagemModel> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<PostagemModel> postagens) {
+		this.postagens = postagens;
+	}
+
 	
 }

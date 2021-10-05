@@ -2,10 +2,13 @@ package com.generation.energym.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -13,6 +16,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Entity
+@Table(name = "tb_postagem")
 public class PostagemModel {
 
 	@Id
@@ -30,12 +35,14 @@ public class PostagemModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 
-	@JsonIgnoreProperties("postagem")
 	@ManyToOne
+	@JoinColumn(name = "fk_tema")
+	@JsonIgnoreProperties("postagem")
 	private TemaModel tema;
 
-	@JsonIgnoreProperties("usuario")
 	@ManyToOne
+	@JoinColumn(name = "fk_usuario")
+	@JsonIgnoreProperties("postagens")
 	private UsuarioModel usuario;
 
 	public long getId() {
