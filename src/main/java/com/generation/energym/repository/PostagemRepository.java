@@ -20,7 +20,7 @@ public interface PostagemRepository extends JpaRepository<PostagemModel, Long>{
 	 */
 	
 
-	public List<TemaRepository> findAllByEquipamentoContainingIgnoreCase(String Equipamento);
+	public List<PostagemRepository> findAllByTextoContainingIgnoreCase(String Texto);
 	
 	
 	
@@ -29,9 +29,9 @@ public interface PostagemRepository extends JpaRepository<PostagemModel, Long>{
 	 * 
 	 * @param titulo
 	 * @return List de titulos
-	 * @author Gabriela 
+	 * @author Gabriela,Vitor
 	 */
 	
-	public List<TemaRepository> findAllByTituloContainingIgnoreCase(String titulo);
+	public List<PostagemRepository> findAllByTituloContainingIgnoreCase(String titulo);
 	
 }
