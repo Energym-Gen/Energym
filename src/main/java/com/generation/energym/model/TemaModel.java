@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,13 +17,13 @@ public class TemaModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
+	@NotBlank //use Not Blank for string
 	@Size(min = 5, max = 100)
-	private String equipamentos;
+	private String equipamento;
 
 	private Boolean ativo;
 
-	@NotBlank
+	@NotNull //use Not Null for numbers
 	private Float economia;
 
 	public long getId() {
@@ -33,12 +34,12 @@ public class TemaModel {
 		this.id = id;
 	}
 
-	public String getEquipamentos() {
-		return equipamentos;
+	public String getEquipamento() {
+		return equipamento;
 	}
 
-	public void setEquipamentos(String equipamentos) {
-		this.equipamentos = equipamentos;
+	public void setEquipamento(String equipamento) {
+		this.equipamento = equipamento;
 	}
 
 	public Boolean getAtivo() {
