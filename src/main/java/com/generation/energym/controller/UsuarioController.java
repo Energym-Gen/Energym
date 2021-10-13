@@ -18,6 +18,7 @@ import com.generation.energym.service.UsuarioService;
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
+	
 	@Autowired
 	private UsuarioService usuarioService;
 	
