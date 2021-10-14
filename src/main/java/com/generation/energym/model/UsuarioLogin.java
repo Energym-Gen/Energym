@@ -1,6 +1,8 @@
 package com.generation.energym.model;
 
 public class UsuarioLogin {
+	
+	private long usuarioID;
 
 	private String nome;
 
@@ -12,6 +14,14 @@ public class UsuarioLogin {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public long getUsuarioID() {
+		return usuarioID;
+	}
+
+	public void setUsuarioID(long usuarioID) {
+		this.usuarioID = usuarioID;
 	}
 
 	public void setNome(String nome) {
