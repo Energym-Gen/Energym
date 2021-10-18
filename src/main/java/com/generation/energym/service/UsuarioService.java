@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
+import org.generation.blogPessoal.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,16 @@ public class UsuarioService {
 		});
 	}
 
+	public Optional<UsuarioModel> atualizarUsuario(UsuarioModel usuario){
+		return repository.findById(usuario.getIdUsuario()).map(usuarioExistente -> {
+			usuarioExistente.setNome(usuario.getNome());
+			usuarioExistente.setSenha(encriptadorDeSenha(usuario.getSenha()));
+			return Optional.ofNullable(repository.save(usuarioExistente));
+		}).orElseGet(() -> {
+			return Optional.empty();
+		});
+	}
+	
 	public Optional<UsuarioLogin> logar(Optional<UsuarioLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<UsuarioModel> usuario = repository.findByEmail(user.get().getEmail());
