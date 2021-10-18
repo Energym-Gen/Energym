@@ -16,16 +16,22 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "tb_usuario")
 public class UsuarioModel {
 
 	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idUsuario;
 	private @NotBlank String nome;
-	private @Email String email;
-	private @NotBlank @Size(min = 5 , max = 100 ) String senha;
-	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE )
+
+	@ApiModelProperty(example = "email@email.com.br")
+	@NotBlank(message = "O atributo Email é Obrigatório!")
+	@Email(message = "O atributo deve ser um email válido!")
+	private String email;
+	private @NotBlank @Size(min = 5, max = 100) String senha;
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<PostagemModel> postagens = new ArrayList<>();
 
@@ -69,5 +75,4 @@ public class UsuarioModel {
 		this.postagens = postagens;
 	}
 
-	
 }
