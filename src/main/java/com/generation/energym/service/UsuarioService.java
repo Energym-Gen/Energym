@@ -4,7 +4,6 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
-import org.generation.blogPessoal.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,7 @@ public class UsuarioService {
 		});
 	}
 
-	public Optional<UsuarioModel> atualizarUsuario(UsuarioModel usuario){
+	public Optional<UsuarioModel> atualizarUsuario(UsuarioModel usuario) {
 		return repository.findById(usuario.getIdUsuario()).map(usuarioExistente -> {
 			usuarioExistente.setNome(usuario.getNome());
 			usuarioExistente.setSenha(encriptadorDeSenha(usuario.getSenha()));
@@ -42,7 +41,7 @@ public class UsuarioService {
 			return Optional.empty();
 		});
 	}
-	
+
 	public Optional<UsuarioLogin> logar(Optional<UsuarioLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<UsuarioModel> usuario = repository.findByEmail(user.get().getEmail());
@@ -55,9 +54,11 @@ public class UsuarioService {
 				String authHeader = "Basic " + new String(encodedAuth);
 
 				user.get().setUsuarioID(usuario.get().getIdUsuario());
-				user.get().setToken(authHeader);
 				user.get().setNome(usuario.get().getNome());
-				user.get().setSenha(usuario.get().getSenha());
+				user.get().setSenha(usuario.get().getSenha());				
+				user.get().setFoto(usuario.get().getFoto());
+				user.get().setTipo(usuario.get().getTipo());				
+				user.get().setToken(authHeader);
 				return user;
 			}
 		}
