@@ -49,7 +49,7 @@
 # 📕Instalação 
 ### 1. Clone esse repositório
 ```
-git clone https://github.com/MatheusMMonteiro/BlogPessoal
+git clone https://github.com/Energym-Gen/Energym
 ```
 ---
 ### 2. Instalação de dependências
