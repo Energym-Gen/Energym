@@ -46,6 +46,27 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="80px"/>
 </div><br>
 
+# 📕Instalação 
+### 1. Clone esse repositório
+```
+git clone https://github.com/MatheusMMonteiro/BlogPessoal
+```
+---
+### 2. Instalação de dependências
+Importe o projeto utilizando o Maven
+
+--> ```Existing Maven Projects```
+ 
+ E Aguarde a instalação das dependências
+
+## 🎮Inicializando o Projeto
+
+1. Execute o projeto no arquivo Application.java
+
+2. ``` Run As - Java Application ```
+
+3. Agora abra a sua API Client(Postman) e teste as rotas conforme o Controller
+
 ## < Desenvolvedores >
 <table border="3">
     <tr>
